@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio Website</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/dc4a08b365.js" crossorigin="anonymous"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: 'poppins', sans-serif;
+            box-sizing: border-box;
+
+        }
+
+        html{
+            scroll-behavior: smooth;
+        }
+
+        body{
+            background-color: black;
+            color: aqua;
+        }
+
+        #header{
+            width: 100%;
+            height: 100vh;
+            background-image: url(image/icon.pnj.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .container{
+            padding: 10px 10%;
+        }
+
+        nav{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .work{
+            width: 140px;
+        }
+
+        nav ul li{
+            display: inline-block;
+            list-style: none;
+            margin: 10px 20px;
+        }
+
+        nav ul li a{
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            position: relative;
+        }
+
+        nav ul li a::after{
+            content: '';
+            width: 100%;
+            height: 3px;
+            background-color: yellow;
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            transition: 0.5s;
+        } 
+
+        nav ul li a:hover::after{
+            width: 100%;
+        }
+
+        .header-text{
+            margin-top: 20%;
+            font-size: 30px;
+        }
+        
+        .header-text h1{
+            font-size: 60px;
+            margin-top: 20px;
+        }
+
+        .header-text h1 span{
+            color: crimson;
+        }
+/* -------------------------------------about----------------------- */
+        #about{
+            padding: 80px 0;
+            color: whitesmoke;
+        }
+
+        .row{
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .about-col-1{
+            flex-basis: 35%;
+        }
+
+        .about-col-1 img{
+            width: 100%;
+            border-radius: 30px;
+        }
+
+        .about-col-2{
+            flex-basis: 60%;
+        }
+
+        .sub-title{
+            font-size: 60px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .tab-titles{
+            display: flex;
+            margin: 20px 0 40px;
+        }
+
+        .tab-links{
+            margin-right: 50px;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .tab-links::after{
+            content: '';
+            width: 0;
+            height: 3px;
+            background-color: aqua;
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            transition: 0.5s;
+        }
+        
+        .tab-links.active-link::after{
+            width: 50%;
+        }
+
+        .tab-contents ul li{
+            list-style: none;
+            margin: 10px 0;
+        }
+
+        .tab-contents ul li span{
+            color: brown;
+            font-size: 14px;
+        }
+
+        .tab-contents{
+            display: none;
+        }
+
+        .tab-contents.active-tab{
+            display: block;
+        }
+
+/* -------------------------------------services----------------------- */   
+        #services{
+            padding: 30px 0;
+        }
+        .services-list{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 40px;
+            margin-top: 50px;
+        }
+        .services-list div{
+            background-color: #262626;
+            padding: 40px;
+            font-size: 13px;
+            font-weight: 300;
+            border-radius: 10px;
+            transition: background 0.5s, transform 0.5s;
+        }
+        .services-list div i{
+            font-size: 50px;
+            margin-top: 30px;
+        }
+        .services-list div h2{
+            font-size: 30px;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        .services-list div a{
+            text-decoration: none;
+            color: white;
+            font-size: 12px;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        .services-list div:hover{
+            background-color: #ff004f;
+            transform: translateY(-10px);
+        }
+/* -------------------------------------portfolio----------------------- */
+        #portfolio{
+            padding: 50px 0;
+        }
+        .work-list{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 40px;
+            margin-top: 50px;
+        }
+        .work{
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        .work img{
+            width: 100%;
+            border-radius: 10px;
+            display: block;
+            transition: transform 0.5s;
+        }
+        .layer{
+            width: 100%;
+            height: 0;
+            background: linear-gradient(rgba(0,0,0,0.6), #ff004f);
+            border-radius: 10px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0, 40px;
+            text-align: center;
+            font-size: 14px;
+            transition: height 0.5s;
+        }
+        .layer h3{
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        .layer a{
+            margin-top: 20px;
+            color: #ff004f;
+            text-decoration: none;
+            font-size: 18px;
+            line-height: 60px;
+            background-color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+        }
+        .work:hover img{
+            transform: scale(1.1);
+        }
+        .work:hover .layer{
+            height: 100%;
+        }
+        .btn{
+            display: block;
+            margin: 50px auto;
+            width: fit-content;
+            border: 1px solid #ff004f;
+            padding: 14px 50px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #fff;
+            transition: background 0.5s;
+        }
+        .btn:hover{
+            background-color: #ff004f;
+        }
+
+/*------------------contact----------------------  --*/
+        .contact-left{
+            flex-basis: 35%;
+        }
+        .contact-right{
+            flex-basis: 60%;
+        }
+        .contact-left p{
+            margin-top: 30px;
+        }
+        .contact-left p i{
+            color: #ff004f;
+            margin-right: 15px;
+            font-size: 25px;
+        }
+        .social-icons{
+            margin-top: 30px;
+        }
+        .social-icons a{
+            text-decoration: none;
+            font-size: 30px;
+            margin-right: 15px;
+            color: #ababab;
+            display: inline-block;
+            transition: transform 0.5s;
+        }
+        .social-icons a:hover{
+            color: #ff004f;
+            transform: translateY(-5px);
+        }
+        .btn.btn2{
+            display: inline-block;
+            background-color: #ff004f;
+        }
+        .contact-right form{
+            width: 100%;
+        }
+        form input, form textarea{
+            width: 100%;
+            border: 0;
+            outline: none;
+            background-color: #262626;
+            padding: 15px;
+            margin: 15px 0;
+            color: #fff;
+            font-size: 18px;
+            border-radius: 6px;
+        }
+        form .btn2{
+            padding: 14px 60px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        .copyright{
+            width: 100%;
+            text-align: center;
+            padding: 25px 0;
+            background-color: #262626;
+            font-weight: 300;
+            margin-top: 20px;
+        }
+        .copyright i{
+            color: red;
+        }
+        #msg{
+            color: #61b752;
+            margin-top: -40px;
+            display: block;
+        }
+        
+/*--------------------------------css for small screen------------------------*/
+@media only screen and (max-width: 600px) {
+        nav .fas{
+           display: none;
+        }
+    #header{
+        background-image: url(image/iconpng21.webp);
+    }
+    .header-text{
+        margin-top: 100%;
+        font-size: 16px;
+    }
+    .header-text h1{
+        font-size: 30px;
+    }
+    nav .fas{
+           display: block;
+           font-size: 25px;
+        }
+        nav ul{
+            background-color: #ff004f;
+            position: fixed;
+            top: 0;
+            right: -200px;
+            width: 200px;
+            height: 100vh;
+            padding-top: 50px;
+            z-index: 2;
+            transition: right 0.5s;
+        }
+        nav ul li{
+            display: block;
+            margin: 25px;
+        }
+        nav ul .fas{
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            cursor: pointer;
+        }
+        .sub-title{
+            font-size: 40px;
+        }
+        .about-col-1, .about-col-2{
+            flex-basis: 100%;
+        }
+        .about-col-1{
+            margin-bottom: 30px;
+        }
+        .about-col-2{
+            font-size: 14px;
+        }
+        .tab-links{
+            font-size: 16px;
+            margin-right: 20px;
+        }
+        .contact-left, .contact-right{
+            flex-basis: 100%;
+        }
+        .copyright{
+            font-size: 14px;
+        }
+        
+}
+    </style>
+</head>
+<body>
+    <div id="header">
+         <div class="container">
+          <nav>
+            <img src="./image/images.jpg" class="work">
+            <ul id="sidemenu">
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <i onclick="closemenu()"></i>
+            </ul>
+            <i onclick="openmenu()"></i>
+          </nav>
+          <div class="header-text">
+              <p>Java Full Stack Developer</p>
+              <h1>Hi I'm<span>Vinay</span><br> Kumar From India</h1>
+          </div>
+         </div>
+    </div>
+<!-- ------------------------about--------------------------------  -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="./image/imge234.jpg">
+                </div>
+                <div class="about-col-2">
+                    <h1 class="sub-title">About Me</h1>
+                    <p>As a graduate with a Bachelor's degree in Computer Science and engineering, I am 
+                        eager to kick-start my career in the role of Software engineering. I possess strong 
+                        theoretical knowledge and a hunger to learn and grow. My biggest achievement 
+                        includes graduating with and receiving the for my academic excellence.Additionally my best qualities include being a quick learner, detail-oriented, and highly 
+                        organized. I have also honed my skills through internships and projects during my 
+                        academic tenure. With a strong work ethic and a passion for this field, I am confident 
+                        that I will make valuable contributions to any organization.</p>
+
+
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="opentab('skills')">skills</p>
+                        <p class="tab-links" onclick="opentab('experince')">Experince</p>
+                        <p class="tab-links" onclick="opentab('education')">Education</p>
+                    </div>
+                    <div class="tab-contents active-tab" id="skills">
+                        <ul>
+                            <li><span>Java Full Stack Developer</span><br></li>
+                            <li><span>Backend Developer</span><br>Java<br>OOP'S<br>Spring Boot<br>JDBC<br>Servlet<br>MYSql<br>MicroServices<br>Python</li>
+                            <li><span>Foranted Developer</span><br>HTML<br>CSS<br>BOOTStrap<br>JavaScript<br>React<br>Angular</li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="experince">
+                        <ul>
+                            <li><span>06/12/2022- 05/06/2023</span><br>Cetpa Infotech Private</li>
+                            <li><span>Java Full Stack Developer</span><br>Backend Developer at At team Lead</li>
+                            <li><span>NassCom Foundation || Adobe 05/09/2025 - 25/11/2024</span><br>Python And Data Analyst</li>
+                            <li><span>Techy Knight || 25/11/2024 - 17/01/2025</span><br>Software Engineer</li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="education">
+                        <ul>
+                            <li><span>2018-2022-B.tech</span><br>Budge Budge Institute Of technology</li>
+                            <li><span>2015-2017</span><br>12th From Nardijan College Nardijan</li>
+                            <li><span>2010-2015</span><br>10th From Shivam Residential Public School At nalada</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--  ----------------services-----------------------------  -->
+<div id="Services">
+     <div class="container">
+        <h1 class="sub-title">My Services</h1>
+        <div class="services-list">
+          <div>
+            <i class="fa-solid fa-code"></i>
+            <h2>Backend Developer</h2>
+            <p>Hello! I'm Vinay Kumar, a passionate Backend Developer dedicated to 
+               building robust, scalable, and efficient server-side solutions. With a 
+               strong foundation in programming and a knack for problem-solving, I specialize in creating APIs, 
+               managing databases, and optimizing server performance to power seamless user experiences.Proficient in Backend Technologies: Skilled in [Java, Python, Node.js, etc.], I build secure and high-performing server-side applications.
+               API Development: Experienced in designing and implementing RESTful APIs, ensuring smooth communication between frontend and backend.
+               Database Expertise: Hands-on experience with relational and NoSQL databases like [MySQL, PostgreSQL, MongoDB], including query optimization and schema design.
+               </p>
+                <a href="#">Learn more</a>
+          </div>
+          <div>
+            <i class="fa-solid fa-crop-simple"></i>
+            <h2>Fornted Developer</h2>
+            <p>Hello! I'm Vinay Kumar, a passionate Backend Developer dedicated to building robust, 
+                scalable, and efficient server-side solutions. With a strong foundation in programming and a 
+                knack for problem-solving, I specialize in creating APIs, managing databases, and optimizing server performance to power seamless user experiences.
+                
+                Proficient in Backend Technologies: Skilled in [Java, Python, Node.js, etc.], I build secure and high-performing server-side applications.
+                API Development: Experienced in designing and implementing RESTful APIs, ensuring smooth communication between frontend and backend.
+                Database Expertise: Hands-on experience with relational and NoSQL databases like [MySQL, PostgreSQL, MongoDB], including query optimization and schema design.
+                </p>
+                <a href="#">Learn more</a>
+          </div>
+          <div>
+            <i class="fa-brands fa-app-store-ios"></i>
+            <h2>App Design</h2>
+            <p>Hello! Vinay Kumar, a passionate App Designer with a knack for creating intuitive, user-centered mobile and web applications. 
+                With a blend of creativity and technical expertise,
+                I design experiences that are not only visually appealing but also functional, accessible, and memorable.
+                User-Centered Design: Crafting interfaces that prioritize usability, accessibility, and an exceptional user experience.
+                Visual Design Excellence: Proficient in creating clean, modern, and engaging app designs using tools like Figma, Sketch, Adobe XD, or InVision.
+                Prototyping & Wireframing: Transforming ideas into interactive prototypes that communicate functionality and flow.I believe in the power of empathy to understand user needs and design apps that solve real-world problems. My design process involves meticulous research, ideation, prototyping, 
+                and testing to create solutions that not only meet but exceed user expectations.
+                </p>
+                <a href="#">Learn more</a>
+          </div>
+        </div>
+     </div>
+</div>
+<!--  --------------------------------Portfolio----------------------------- -->
+<div id="portfolio">
+     <div class="container">
+         <h1 class="sub-title">My Work</h1>
+         <div class="work-list">
+             <div class="work">
+                <img src="./image/1222.jpg">
+                <div class="layer">
+                    <h3>Programmer & Codeing</h3>
+                    <p>I'm Vinay Kumar, a passionate Programmer and problem-solverbring.</p>
+                    <a href="#"><i class="fa-solid fa-up-right-from-square"></i></a>
+                </div>
+             </div>
+             <div class="work">
+                <img src="./image/work.png16.jpeg">
+                <div class="layer">
+                    <h3>Software Development</h3>
+                    <p>Hello! I'm Vinay Kumar, a dedicated Software Developer with a passion for..
+                    </p>
+                        <a href="#"><i class="fa-solid fa-up-right-from-square"></i></a>
+                </div>
+             </div>
+             <div class="work">
+                <img src="image/work.png13.jpg">
+                <div class="layer">
+                    <h3>Office Meeting</h3>
+                    <p>Build your company's presence with a virtual office in India. 
+                        Our extensive.</p>
+                        <a href="#"><i class="fa-solid fa-up-right-from-square"></i></a>
+                </div>
+             </div>
+         </div>
+         <a href="#" class="btn">See More...</a>
+     </div>
+</div>
+<!--  ------------------contact---------------------- -->
+<div id="Contact">
+    <div class="container">
+         <div class="row">
+            <div class="contact-left">
+                <h1 class="sub-title">Contact Me</h1>
+                <p><i class="fa-solid fa-paper-plane"></i>kr.vinay1999@gmail.com</p>
+                <p><i class="fa-solid fa-square-phone"></i>+91 6203950971</p>
+                <div class="social-icons">
+                    <a href="https://fa-facebook.com/"><i class="fa-brands fa-facebook"></i></a>
+                    <a href=""><i class="fa-brands fa-twitter"></i></i></a>
+                    <a href=""><i class="fa-brands fa-instagram"></i></a>
+                    <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+                <a href="imagE/VINAY KUMAR_Resume.pdf" download class="btn btn2">Download Cv</a>
+            </div>
+            <div class="contact-right">
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" placeholder="Your Name" required>
+                    <input type="email" name="Email" placeholder="Your Email" required>
+                    <textarea name="Message" rows="6" placeholder="Your Meaasge"></textarea>
+                    <button type="submit" class="btn btn2">Submit</button>
+                </form>
+                <span id="msg"></span>
+            </div>
+         </div>
+    </div>
+    <div class="copyright">
+         <p>Copyright © 2025 KrVinay. Create <i class="fa-solid fa-heart"></i> by  Me</p>
+    </div>
+</div>
+
+
+
+<script>
+
+  
+    var tablinks = document.getElementsByClassName("tab-links");
+    var tabcontents = document.getElementsByClassName("tab-contents");
+
+
+   function opentab(tabname){
+       for(tablink of tablinks){
+        tablink.classList.remove("active-link");
+       }
+       for(tabcontent of tabcontents){
+        tabcontent.classList.remove("active-tab");
+       }
+       event.currentTarget.classList.add("active-link");
+       document.getElementById(tabname).classList.add("active-tab");
+   }
+
+</script>
+
+<script>
+
+    var sidemenu = document.grtElementById("sidemenu"); 
+
+    function openmenu(){
+        sidemenu.style.right = "0";
+    }
+
+    function closemenu(){
+        sidemenu.style.right = "-200px";
+    }
+
+</script>
+    
+<script>
+    const scriptURL ='https://script.google.com/macros/s/AKfycbw2YfmdFvMvIsQbpAPJ_ZFbXfClLkK_5tDzW9oIapOAKCkIQbDqxyDvs03u_LpDHmgJKw/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById("msg")
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML = "Message sent successfully"
+            setTimeout(function(){
+                msg.innerHTML = ""
+            },600)
+            form.reset
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+</body>
+</html>
